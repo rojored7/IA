@@ -1,0 +1,67 @@
+[System]
+Name='PENDULO3'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=1
+NumRules=11
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='dt'
+Range=[-0.3 0.3]
+NumMFs=3
+MF1='DTN':'gbellmf',[0.29 25 -0.3]
+MF2='DTC':'gbellmf',[0.01 9 0]
+MF3='DTP':'gbellmf',[0.29 24 0.3]
+
+[Input2]
+Name='t'
+Range=[-1 1]
+NumMFs=3
+MF1='TN':'gbellmf',[0.97 27 -1]
+MF2='TC':'gbellmf',[0.03 15 0]
+MF3='TP':'gbellmf',[0.97 27 1]
+
+[Input3]
+Name='dx'
+Range=[-3 3]
+NumMFs=3
+MF1='DXN':'gbellmf',[2.9 27 -3]
+MF2='DXC':'gbellmf',[0.1 15 5.551e-17]
+MF3='DXP':'gbellmf',[2.9 27 3.02]
+
+[Input4]
+Name='x'
+Range=[-3 3]
+NumMFs=3
+MF1='XN':'gbellmf',[2.97 27 -3]
+MF2='XC':'gbellmf',[0.1 20 0.0794]
+MF3='XP':'gbellmf',[2.8 29 3]
+
+[Output1]
+Name='fuerza'
+Range=[-10 10]
+NumMFs=5
+MF1='FGN':'gbellmf',[4 70 -9]
+MF2='FPN':'gbellmf',[2 70 -3]
+MF3='FC':'gbellmf',[1 70 0]
+MF4='FPP':'gbellmf',[2 70 3]
+MF5='FGP':'gbellmf',[4 70 9]
+
+[Rules]
+2 2 2 2, 3 (1) : 1
+1 1 0 0, 1 (1) : 1
+1 3 0 0, 1 (1) : 1
+3 3 0 0, 5 (1) : 1
+3 1 0 0, 5 (1) : 1
+2 2 1 1, 1 (1) : 1
+2 2 1 3, 1 (1) : 1
+2 2 3 3, 5 (1) : 1
+2 2 3 1, 5 (1) : 1
+2 2 3 2, 5 (1) : 1
+2 2 1 2, 1 (1) : 1
